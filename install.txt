@@ -1,0 +1,6 @@
+charset,UTF-8
+
+type,ghost
+name,詠み人見習い
+directory,yomibito_minarai
+
