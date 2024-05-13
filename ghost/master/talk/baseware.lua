@@ -25,7 +25,7 @@ return {
     content = function(shiori, ref)
       local __ = shiori.var
       __("_Explain", nil)
-      return [=[\![embed,OnView,normal,さようなら,また会いましょう,いつの日か]\-]=]
+      return shiori:talk("OnView", "normal", "さようなら", "また会いましょう", "いつの日か") .. [[\-]]
     end,
   },
   {
@@ -83,6 +83,41 @@ return {
   {
     id  = "OnSurfaceRestore",
     content = [=[\0\s[0]]=],
+  },
+  {
+    id  = "OnUpdateBegin",
+    content = function(shiori, ref)
+      local __ = shiori.var
+      __("_Explain", nil)
+      return shiori:talk("OnView", "normal", "ゴーストの", "更新作業", "始めるよ")
+    end,
+  },
+  {
+    id  = "OnUpdateReady",
+    content = function(shiori, ref)
+      local __ = shiori.var
+      __("_Explain", nil)
+      return shiori:talk("OnView", "normal", "ゴーストに", "更新データ", "あるみたい")
+    end,
+  },
+  {
+    id  = "OnUpdateComplete",
+    content = function(shiori, ref)
+      local __ = shiori.var
+      __("_Explain", nil)
+      if ref[0] == "none" then
+        return shiori:talk("OnView", "normal", "ゴーストの", "更新データ", "無かったよ")
+      end
+      return shiori:talk("OnView", "normal", "ゴーストの", "更新作業", "終わったよ")
+    end,
+  },
+  {
+    id  = "OnUpdateFailure",
+    content = function(shiori, ref)
+      local __ = shiori.var
+      __("_Explain", nil)
+      return shiori:talk("OnView", "normal", "ゴーストの", "更新中に", "エラー出た") .. [[\1]] .. ref[0]
+    end,
   },
 }
 
